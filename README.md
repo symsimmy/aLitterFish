@@ -5,6 +5,7 @@
 
 ```python
 ├─.metadata         #这个是项目的eclipse配置文件，大家尽量别动里面的内容，这样我们在不同的电脑运行时能保证配置的一致性。
+│                   #配置文件太大了，就不上传了。
 └─aLitterShark      #熟悉的J2EE目录结构。
     ├─.settings
     ├─lib
