@@ -11,11 +11,14 @@ import com.lab.dao.StaffDao;
 import com.lab.hibernate.HibernateSessionFactory;
 import com.lab.utils.StringUtil;
 
+import net.sf.json.JSONObject;
+
 public class StaffBll implements StaffDao{
 
 	 /*
 	  * 登录
 	  * */
+	@SuppressWarnings("finally")
 	@Override
 	public boolean login(Staff staff) throws LoginException {
 		Session session = HibernateSessionFactory.getSession();
@@ -33,13 +36,48 @@ public class StaffBll implements StaffDao{
 			transaction.commit();
 			transaction=null;
 		}catch (HibernateException e) {
-		   e.printStackTrace();
+		   System.out.println("用户登陆出错："+e);
 		   if (transaction!=null) {
 			transaction.rollback();
 		  }
 	    }finally{
 		  session.close();
 		  return result;
+	   }
+	}
+
+	@SuppressWarnings("finally")
+	@Override
+	public JSONObject getStaff(String staff_id) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		Transaction transaction = session.beginTransaction();
+		
+		JSONObject my_profile = new JSONObject();
+		Staff staff = null;
+		try {
+			staff = (Staff)session.get(Staff.class, staff_id);
+			if (staff == null){
+				my_profile.put("errorcode", "1001");
+				my_profile.put("details", "查询用户信息为空");
+				my_profile = null;
+			}else{
+				my_profile.put("errorcode", "200");
+				my_profile.put("details", "成功");
+				my_profile.put("staff", staff);
+			}
+			transaction.commit();
+			transaction=null;
+		}catch (HibernateException e) {
+		   System.out.println("查询用户信息出错:"+e);
+			my_profile.put("errorcode", "1002");
+			my_profile.put("details", "查询用户信息出错");
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+	    }finally{
+		  session.close();
+		  return my_profile;
 	   }
 	}
 

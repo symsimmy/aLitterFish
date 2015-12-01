@@ -29,18 +29,18 @@ public class HibernateSessionFactory {
     private static Configuration configuration = new Configuration();
     private static ServiceRegistry serviceRegistry; 
 
-/*	static {
+	static {
     	try {
 			configuration.configure();
-			serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		} catch (Exception e) {
 			System.err.println("%%%% Error Creating SessionFactory %%%%");
 			e.printStackTrace();
 		}
-    }*/
+    }
 	
-	@SuppressWarnings("unused")
+/*	@SuppressWarnings("unused")
 	private static void buildSessionFactory() {  
         try {  
               
@@ -53,7 +53,7 @@ public class HibernateSessionFactory {
             System.out.println("创建SessionFactory时出错！"+ex);  
             throw new ExceptionInInitializerError(ex);  
         }  
-    }  
+    }*/  
 	
     private HibernateSessionFactory() {
     }

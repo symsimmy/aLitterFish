@@ -11,7 +11,57 @@
     <result name="success" type="dispatcher">/pages/index.jsp</result>
     <result name="input" type="redirect">/pages/login.jsp</result>
   </action>
+  <action name="getstaff" class="com.lab.actions.LoginAction" method="getStaff">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="samplelists" class="com.lab.actions.SampleAction" method="samplelists">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="addsample" class="com.lab.actions.SampleAction" method="addSample">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+    <action name="getsample" class="com.lab.actions.SampleAction" method="getSample">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="addequip" class="com.lab.actions.StanEquipAction" method="addEquip">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+    <action name="getequiplist" class="com.lab.actions.StanEquipAction" method="getEquipList">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+    <action name="getequip" class="com.lab.actions.StanEquipAction" method="getEquip">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+   <action name="addtianpingdata" class="com.lab.actions.TianpingDataAction" method="addTianpingData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="gettianpingdata" class="com.lab.actions.TianpingDataAction" method="getTianpingData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="getblooddata" class="com.lab.actions.XueyaDataAction" method="getXueyaData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="addblooddata" class="com.lab.actions.XueyaDataAction" method="addXueyaData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="getwenshijidata" class="com.lab.actions.WenshijiDataAction" method="getWenshijiData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
+  <action name="addwenshijidata" class="com.lab.actions.WenshijiDataAction" method="addWenshijiData">
+    <result name="success" type="dispatcher">/pages/index.jsp</result>
+    <result name="input" type="redirect">/pages/test.jsp</result>
+  </action>
   </package>
-  
-  
 </struts>

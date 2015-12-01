@@ -10,5 +10,7 @@
 <h1>login success!</h1>
 <h1>用户名：<s:property value="id"/></h1>
 <h1>密码：<s:property value="password"/></h1>
+<h1>返回结果:</h1>
+<div><s:property value="#application.samplelists"/></div>
 </body>
 </html>

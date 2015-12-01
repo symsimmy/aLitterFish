@@ -2,8 +2,7 @@
 SQLyog v10.2 
 MySQL - 5.1.49-community : Database - lab
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -30,6 +29,8 @@ CREATE TABLE `sample` (
 
 /*Data for the table `sample` */
 
+insert  into `sample`(`id`,`company`,`type`) values ('000001','南理工1','天平'),('000002','南理工2','温湿计'),('000003','南理工1','温湿计'),('000004','南理工1','血压'),('000005','南理工2','温湿计');
+
 /*Table structure for table `staff` */
 
 DROP TABLE IF EXISTS `staff`;
@@ -40,8 +41,7 @@ CREATE TABLE `staff` (
   `name` varchar(45) NOT NULL,
   `position` varchar(45) NOT NULL,
   `isInService` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `staffid_unique` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `staff` */
@@ -72,6 +72,8 @@ CREATE TABLE `tianping_data` (
   `sample_pressure` double NOT NULL,
   `testtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`staff_id`,`equip_id`,`sample_id`,`testtime`),
+  KEY `equipid_index` (`equip_id`),
+  KEY `sampleid_index` (`sample_id`),
   CONSTRAINT `tianping_data_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `tianping_data_ibfk_2` FOREIGN KEY (`equip_id`) REFERENCES `stan_equip` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `tianping_data_ibfk_3` FOREIGN KEY (`sample_id`) REFERENCES `sample` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
@@ -93,9 +95,11 @@ CREATE TABLE `wenshiji_data` (
   `sample_shidu` double NOT NULL,
   `testtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`staff_id`,`equip_id`,`sample_id`,`testtime`),
-  CONSTRAINT `wenshiji_data_ibfk_3` FOREIGN KEY (`sample_id`) REFERENCES `sample` (`id`) ON UPDATE CASCADE,
+  KEY `equipid_index` (`equip_id`),
+  KEY `sampleid_index` (`sample_id`),
   CONSTRAINT `wenshiji_data_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `wenshiji_data_ibfk_2` FOREIGN KEY (`equip_id`) REFERENCES `stan_equip` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `wenshiji_data_ibfk_2` FOREIGN KEY (`equip_id`) REFERENCES `stan_equip` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `wenshiji_data_ibfk_3` FOREIGN KEY (`sample_id`) REFERENCES `sample` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `wenshiji_data` */
@@ -114,6 +118,9 @@ CREATE TABLE `xueya_data` (
   `sample_low` double NOT NULL,
   `testtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`staff_id`,`equip_id`,`sample_id`,`testtime`),
+  KEY `equipid_index` (`staff_id`),
+  KEY `sampleid_index` (`sample_id`),
+  KEY `equip_id` (`equip_id`),
   CONSTRAINT `xueya_data_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `xueya_data_ibfk_2` FOREIGN KEY (`equip_id`) REFERENCES `stan_equip` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `xueya_data_ibfk_3` FOREIGN KEY (`sample_id`) REFERENCES `sample` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE

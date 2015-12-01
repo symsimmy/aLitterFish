@@ -32,7 +32,7 @@ public class Staff implements java.io.Serializable {
 		this.name = name;
 		this.password = password;
 		this.position = position;
-		this.isInService = isInService;
+		this.setIsInService(isInService);
 	}
 
 	/** full constructor */
@@ -42,7 +42,7 @@ public class Staff implements java.io.Serializable {
 		this.name = name;
 		this.password = password;
 		this.position = position;
-		this.isInService = isInService;
+		this.setIsInService(isInService);
 		this.tianpingDatas = tianpingDatas;
 		this.xueyaDatas = xueyaDatas;
 		this.wenshijiDatas = wenshijiDatas;
@@ -113,5 +113,7 @@ public class Staff implements java.io.Serializable {
 	public void setWenshijiDatas(Set wenshijiDatas) {
 		this.wenshijiDatas = wenshijiDatas;
 	}
+
+	
 
 }
